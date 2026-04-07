@@ -10,23 +10,23 @@ services:
       - ./logs:/app/logs
     env_file:
       - .env
+    depends_on:
+      - redis
     networks:
       - qwen2api
       - apinetwork
 
   redis:
     image: redis:7.2-alpine
-    container_name: qwen2api-redis
+    container_name: qwen2api_redis
     restart: always
-    ports:
-      - "6379:6379"
     volumes:
-      - redis-data:/data
+      - qwen2api_redis:/data
     networks:
       - qwen2api
 
 volumes:
-  redis-data:
+  qwen2api_redis:
 
 networks:
   qwen2api:

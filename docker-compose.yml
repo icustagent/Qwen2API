@@ -33,4 +33,5 @@ networks:
   qwen2api:
     name: qwen2api
   apinetwork:
+    external: true
     name: apinetwork
